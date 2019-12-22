@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Ara Ara</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+
+<body class="dark">
 {% block body %}
     <h1>THIS WORKS!</h1>
 {% endblock %}
