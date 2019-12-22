@@ -18,6 +18,6 @@ from django.urls import path
 from Ara_Ara import views
 
 urlpatterns = [
-    path('', views.hello),
-    path('hello', views.hello)
+    path('', views.hello, name='homepage'),
+    path('hello', views.hello, name='hello')
 ]
