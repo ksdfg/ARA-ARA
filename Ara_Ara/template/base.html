@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <title>Ara Ara</title>
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body class="dark">
 {% block body %}
-    <h1>THIS WORKS!</h1>
+    <div class="container" style="width: fit-content; width: -moz-fit-content">
+        {% block content %}
+            <h1>This works</h1>
+        {% endblock %}
+    </div>
 {% endblock %}
 </body>
 </html>
