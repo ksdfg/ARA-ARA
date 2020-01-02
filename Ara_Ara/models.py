@@ -26,6 +26,7 @@ class Anime(models.Model):
 class Review(models.Model):
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.TextField(default="")
 
     class Meta:
         db_table = 'Review'

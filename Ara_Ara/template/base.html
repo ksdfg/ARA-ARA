@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <title>Ara Ara</title>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700|Roboto:300,400,500,700"
+          rel="stylesheet">
+    <link href="https://staticf.akacdn.ru/assets/min/frontend/all.css?5df52d81" rel="stylesheet">
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
-<body class="dark">
+<body class="dark index">
 {% block body %}
+    <div class="head">
+        <h1>Head</h1>
+    </div>
     <div class="container" style="width: fit-content; width: -moz-fit-content">
         {% block content %}
             <h1>This works</h1>
