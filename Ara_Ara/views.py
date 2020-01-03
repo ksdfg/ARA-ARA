@@ -14,12 +14,14 @@ def register_request(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             login(request, user)
-            messages.success(request, f"Account created! You are now logged in as {username}")
+            messages.success(request, "Account created!")
+            messages.info(request, f"You are now logged in as {username}")
             return redirect('homepage')
 
-        for msg in form.error_messages:
-            print(form.cleaned_data.get('password1'), form.cleaned_data.get('password1'))
-            messages.error(request, form.error_messages[msg])
+        for field in form:
+            for msg in field.errors:
+                print(msg)
+                messages.error(request, msg)
         return render(request, 'register.html', context=dict(form.__dict__['data']))
 
     return render(request, 'register.html')
