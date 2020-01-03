@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <div class=" w3l-login-form" style="width: 500px">
+        <h2>Register</h2>
+        <form action="#" method="POST">
+            {% csrf_token %}    <!--requirement of django; here for security-->
+
+            <!--name field-->
+            <div class=" w3l-form-group">
+                <div class="group">
+                    <i class="material-icons icon">face</i>
+                    <input id="id_first_name" type="text" placeholder="First name" name="first_name" required/>
+                    <input id="id_last_name" type="text" placeholder="Last name" name="last_name"/>
+                </div>
+            </div>
+
+            <!--email field-->
+            <div class=" w3l-form-group">
+                <div class="group">
+                    <i class="material-icons icon">email</i>
+                    <input id="id_email" type="text" placeholder="E-Mail" name="email" required/>
+                </div>
+            </div>
+
+            <hr>
+
+            <!--username field-->
+            <div class=" w3l-form-group">
+                <div class="group">
+                    <i class="material-icons icon">account_circle</i>
+                    <input id="id_username" type="text" placeholder="Username" name="username" required/>
+                </div>
+            </div>
+
+            <!--password field-->
+            <div class=" w3l-form-group">
+                <div class="group">
+                    <i class="material-icons icon">lock_open</i>
+                    <input id="id_password1" type="password" placeholder="Password" name="password1" required/>
+                </div>
+            </div>
+
+            <!--password re-enter field-->
+            <div class=" w3l-form-group">
+                <div class="group">
+                    <i class="material-icons icon">lock_open</i>
+                    <input id="id_password2" type="password" placeholder="Re-enter Password" name="password2" required/>
+                </div>
+            </div>
+
+            <button type="submit" style="margin-top: 10%">Register</button>    <!--submit button-->
+        </form>
+    </div>
+{% endblock %}

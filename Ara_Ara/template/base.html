@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <title>Ara Ara</title>
 
-    <!--load our own css and JavaScript-->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import Google Text Font-->
     <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <!--Import materialize JavaScript-->
+    <!-- Compiled and minified JavaScript from Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--load our own css and JavaScript-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/material.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!--Extra stuff in head (diff per page)-->{% block head %}{% endblock %}
 
@@ -36,14 +35,14 @@
     <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 1</a>
     <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 2</a>
     <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 3</a>
-    <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 4</a>
     <a href="{% url 'logout' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">Logout</a>
+    <a href="{% url 'register' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">Register</a>
 </div>
 
 <!--Pop ups to show some messages-->
 {% if messages %}
     {% for message in messages %}
-        <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength: 2000});</script>
+        <script>M.toast({html: "{{message}}", classes: 'w3-theme-red rounded', displayLength: 2000});</script>
     {% endfor %}
 {% endif %}
 

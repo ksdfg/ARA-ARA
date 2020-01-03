@@ -1,11 +1,15 @@
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 
 
 # Create your views here.
+
+def register_request(request):
+    return render(request, 'register.html', {'form': UserCreationForm()})
+
 
 def login_request(request):
     if request.method == 'POST':
