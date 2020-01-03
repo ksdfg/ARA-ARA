@@ -21,6 +21,11 @@
 <div class="w3-container head">
     <h1>Head</h1>
 </div>
+{% if messages %}
+    {% for message in messages %}
+        <h3>{{ message }} </h3>
+    {% endfor %}
+{% endif %}
 <div class="w3-container center fit-content w3-padding-large">
     {% block content %}
         {% if a == 1 %}

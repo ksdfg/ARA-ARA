@@ -13,17 +13,18 @@
     <div class=" w3l-login-form">
         <h2>Login Here</h2>
         <form action="#" method="POST">
+            {% csrf_token %}
 
             <div class=" w3l-form-group">
                 <div class="group">
                     <i class="material-icons icon">account_circle</i>
-                    <input type="text" placeholder="Username" required/>
+                    <input type="text" placeholder="Username" name="username" required/>
                 </div>
             </div>
             <div class=" w3l-form-group">
                 <div class="group">
                     <i class="material-icons icon">lock_open</i>
-                    <input type="password" placeholder="Password" required/>
+                    <input type="password" placeholder="Password" name="password" required/>
                 </div>
             </div>
             <button type="submit" style="margin-top: 10%">Login</button>
