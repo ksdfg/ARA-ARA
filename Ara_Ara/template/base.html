@@ -4,35 +4,53 @@
     <meta charset="UTF-8">
     <title>Ara Ara</title>
 
+    <!--load our own css and JavaScript-->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/w3.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import Google Text Font-->
     <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <!--Import materialize JavaScript-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    {% block head %}{% endblock %}
+    <!--Extra stuff in head (diff per page)-->{% block head %}{% endblock %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
 <body class="w3-theme">
-<div class="w3-container head">
-    <h1>Head</h1>
+
+<!--Header - logos and stuff go here-->
+<div class="w3-container head w3-padding">
+    <h1 style="font-family: 'Raleway', sans-serif;">Ara Ara</h1>
 </div>
+
+<!--Navbar-->
+<div class="w3-bar head">
+    <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 1</a>
+    <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 2</a>
+    <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 3</a>
+    <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme">Link 4</a>
+    <a href="{% url 'logout' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">Logout</a>
+</div>
+
+<!--Pop ups to show some messages-->
 {% if messages %}
     {% for message in messages %}
-        <h3>{{ message }} </h3>
+        <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength: 2000});</script>
     {% endfor %}
 {% endif %}
+
+<!--div where the page content goes-->
 <div class="w3-container center fit-content w3-padding-large">
     {% block content %}
-        {% if a == 1 %}
-            <h1>This works</h1>
-        {% else %}
-            <h1>This really works</h1>
-        {% endif %}
+        <h1>This works</h1>
     {% endblock %}
 </div>
 </body>

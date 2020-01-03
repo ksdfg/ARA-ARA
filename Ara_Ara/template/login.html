@@ -10,27 +10,34 @@
 {% endblock %}
 
 {% block content %}
+    <!--suppress HtmlFormInputWithoutLabel -->
     <div class=" w3l-login-form">
         <h2>Login Here</h2>
         <form action="#" method="POST">
-            {% csrf_token %}
+            {% csrf_token %}    <!--requirement of django; here for security-->
 
+            <!--username field-->
             <div class=" w3l-form-group">
                 <div class="group">
                     <i class="material-icons icon">account_circle</i>
-                    <input type="text" placeholder="Username" name="username" required/>
+                    <input id="id_username" type="text" placeholder="Username" name="username" required/>
                 </div>
             </div>
+
+            <!--password field-->
             <div class=" w3l-form-group">
                 <div class="group">
                     <i class="material-icons icon">lock_open</i>
-                    <input type="password" placeholder="Password" name="password" required/>
+                    <input id="id_password" type="password" placeholder="Password" name="password" required/>
                 </div>
             </div>
-            <button type="submit" style="margin-top: 10%">Login</button>
+
+            <button type="submit" style="margin-top: 10%">Login</button>    <!--submit button-->
         </form>
-        <p class=" w3l-register-p">Don't have an account?<a href="#" class="register"> Register</a></p>
+        <p class=" w3l-register-p">Don't have an account?<a href="/accounts/register" class="register"> Register</a></p>
     </div>
+
+    <!--this is here so we don't get sued by whoever holds the license to the template-->
     <footer>
         <p class="copyright-agileinfo"> &copy; 2018 Material Login Form. All Rights Reserved | Design by <a
                 href="http://w3layouts.com">W3layouts</a></p>

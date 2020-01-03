@@ -6,10 +6,6 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here.
-@login_required
-def hello(request):
-    return render(request, 'base.html', {})
-
 
 def login_request(request):
     if request.method == 'POST':
@@ -36,3 +32,9 @@ def logout_request(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
     return redirect('homepage')
+
+
+# display homepage
+@login_required
+def homepage(request):
+    return render(request, 'base.html', {})
