@@ -1,15 +1,16 @@
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
+from Ara_Ara.forms import NewUserForm
+
 
 def register_request(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
