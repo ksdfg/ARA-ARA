@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <title>Ara Ara</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700|Roboto:300,400,500,700"
-          rel="stylesheet">
-    <link href="https://staticf.akacdn.ru/assets/min/frontend/all.css?5df52d81" rel="stylesheet">
-
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    {% block head %}{% endblock %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
-<body class="dark index">
-{% block body %}
-    <div class="head">
-        <h1>Head</h1>
-    </div>
-    <div class="container" style="width: fit-content; width: -moz-fit-content">
-        {% block content %}
+<body class="w3-theme">
+<div class="w3-container head">
+    <h1>Head</h1>
+</div>
+<div class="w3-container center fit-content w3-padding-large">
+    {% block content %}
+        {% if a == 1 %}
             <h1>This works</h1>
-        {% endblock %}
-    </div>
-{% endblock %}
+        {% else %}
+            <h1>This really works</h1>
+        {% endif %}
+    {% endblock %}
+</div>
 </body>
 </html>

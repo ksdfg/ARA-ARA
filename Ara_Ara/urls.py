@@ -19,5 +19,5 @@ from Ara_Ara import views
 
 urlpatterns = [
     path('', views.hello, name='homepage'),
-    path('hello', views.hello, name='hello')
+    path('login', views.login, name='login')
 ]
