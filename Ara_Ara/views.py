@@ -8,7 +8,21 @@ from django.shortcuts import render, redirect
 # Create your views here.
 
 def register_request(request):
-    return render(request, 'register.html', {'form': UserCreationForm()})
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            login(request, user)
+            messages.success(request, f"Account created! You are now logged in as {username}")
+            return redirect('homepage')
+
+        for msg in form.error_messages:
+            print(form.cleaned_data.get('password1'), form.cleaned_data.get('password1'))
+            messages.error(request, form.error_messages[msg])
+        return render(request, 'register.html', context=dict(form.__dict__['data']))
+
+    return render(request, 'register.html')
 
 
 def login_request(request):
