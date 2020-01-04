@@ -1,3 +1,5 @@
+from random import choice
+
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -6,6 +8,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from Ara_Ara.forms import NewUserForm
+from Ara_Ara.models import Anime
 
 
 def register_request(request):
@@ -58,4 +61,8 @@ def logout_request(request):
 # display homepage
 @login_required
 def homepage(request):
-    return render(request, 'base.html', {})
+    animes = [
+        Anime(name="Random Anime", description="".join(["f " for _ in range(choice(range(200)))]))
+        for _ in range(choice(range(10)))
+    ]
+    return render(request, 'homepage.html', {'animes': animes})

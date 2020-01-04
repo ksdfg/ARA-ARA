@@ -6,10 +6,11 @@ from django.db import models
 
 class Anime(models.Model):
     name = models.CharField(max_length=100)
-    total_eps = models.IntegerField()
+    total_eps = models.IntegerField(default=12)
     aired_eps = models.IntegerField(null=True)
     status = models.CharField(max_length=1,
                               choices=(('a', "airing"), ('n', "not yet aired"), ('f', "finished airing")), default='n')
+    description = models.TextField(default="")
 
     class Meta:
         db_table = 'Anime'

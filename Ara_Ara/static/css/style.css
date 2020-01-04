@@ -10,6 +10,11 @@
     background-color: #fc3955 !important;
 }
 
+.w3-theme-dark {
+    color: rgb(201, 197, 190) !important;
+    background-color: rgb(11, 10, 13) !important;
+}
+
 .w3-text-theme {
     color: #16151d !important
 }
@@ -323,10 +328,6 @@ footer {
 .center {
     margin-left: auto;
     margin-right: auto;
-}
-
-.head {
-    background-color: rgb(11, 10, 13);
 }
 
 .fit-content {
