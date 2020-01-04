@@ -323,7 +323,7 @@ footer {
 
 /*-- /materialize stuff for toast --*/
 
-/*-- custom classes --*/
+/*-- custom classes and tag styles --*/
 
 .center {
     margin-left: auto;
@@ -335,4 +335,12 @@ footer {
     width: -moz-fit-content;
 }
 
-/*-- /custom classes --*/
+h1, h2 {
+    color: #fc3955;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+/*-- /custom classes and tag styles --*/

@@ -6,9 +6,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
-# Create your views here.
 from Ara_Ara.forms import NewUserForm
 from Ara_Ara.models import Anime
+
+
+# Create your views here.
+def view_base(request):
+    return render(request, 'base.html')
 
 
 def register_request(request):

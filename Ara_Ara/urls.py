@@ -18,6 +18,7 @@ from django.urls import path
 from Ara_Ara import views
 
 urlpatterns = [
+    path('base', views.view_base, name='base'),
     path('', views.homepage, name='homepage'),
     path('accounts/login/', views.login_request, name='login'),
     path('accounts/logout', views.logout_request, name='logout'),

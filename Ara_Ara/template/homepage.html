@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="w3-row-padding w3-stretch">
-        <div class="w3-col l8">
             <div class="w3-panel w3-card-4 w3-padding w3-theme-dark w3-center w3-row-padding w3-stretch">
                 <h1>Recommended</h1>
                 {% for anime in animes %}
@@ -18,16 +16,4 @@
                     </div>
                 {% endfor %}
             </div>
-        </div>
-        <div class="w3-col l4">
-            <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
-                <h1>Today's Releases</h1>
-                <ul>
-                    {% for anime in animes %}
-                        <li>{{ anime.name }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </div>
 {% endblock %}
