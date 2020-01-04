@@ -29,7 +29,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'material.admin',
+    'material.admin.default',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -77,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Ara_Ara',
-        'USER': 'wtl',
-        'PASSWORD': 'onee_san',
+        'USER': 'root',
+        'PASSWORD': 'kshitish1247',
     }
 }
 
