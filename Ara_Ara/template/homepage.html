@@ -2,15 +2,31 @@
 
 {% block content %}
     <div class="w3-row-padding w3-stretch">
-        {% for anime in animes %}
-            <div class="w3-col w3-third">
-                <div class="w3-display-container w3-panel w3-card-4 w3-center w3-padding-large w3-hover-theme"
-                     style="height: 350px">
-                    <h2>{{ anime.name }}</h2>
-                    <b>Status : </b>{{ anime.get_status_display }}
-                    <p>{{ anime.description }}</p>
-                </div>
+        <div class="w3-col l8">
+            <div class="w3-panel w3-card-4 w3-padding w3-theme-dark w3-center w3-row-padding w3-stretch">
+                <h1>Recommended</h1>
+                {% for anime in animes %}
+                    <div class="w3-col l3">
+                        <div class="w3-display-container w3-theme w3-hover-theme w3-card-2 w3-padding w3-margin-bottom">
+                            <img class="w3-image w3-margin-top" src="http://i.imgur.com/0nBFx9r.jpg" alt="image"
+                                 style="max-height: 200px">
+                            <h3>{{ anime.name }}</h3>
+                            <p class="w3-display-hover"><b>Status : </b>{{ anime.get_status_display }}</p>
+                            <p class="w3-display-hover"><b>Description :</b><br>{{ anime.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
+        <div class="w3-col l4">
+            <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
+                <h1>Today's Releases</h1>
+                <ul>
+                    {% for anime in animes %}
+                        <li>{{ anime.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}

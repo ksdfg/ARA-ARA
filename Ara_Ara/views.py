@@ -59,7 +59,6 @@ def logout_request(request):
 
 
 # display homepage
-@login_required
 def homepage(request):
     animes = [
         Anime(name="Random Anime", description="".join(["f " for _ in range(choice(range(200)))]))
