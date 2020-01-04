@@ -61,7 +61,7 @@ def logout_request(request):
 # display homepage
 def homepage(request):
     animes = [
-        Anime(name="Random Anime", description="".join(["f " for _ in range(choice(range(200)))]))
+        Anime(name="Random Anime", synopsis="".join(["f " for _ in range(choice(range(200)))]))
         for _ in range(choice(range(10)))
     ]
     return render(request, 'homepage.html', {'animes': animes})

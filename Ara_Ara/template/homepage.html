@@ -11,8 +11,9 @@
                             <img class="w3-image w3-margin-top" src="http://i.imgur.com/0nBFx9r.jpg" alt="image"
                                  style="max-height: 200px">
                             <h3>{{ anime.name }}</h3>
-                            <p class="w3-display-hover"><b>Status : </b>{{ anime.get_status_display }}</p>
-                            <p class="w3-display-hover"><b>Description :</b><br>{{ anime.description }}</p>
+                            <p class="w3-display-hover" aria-haspopup="true"><b>Status
+                                : </b>{{ anime.get_status_display }}</p>
+                            <p class="w3-display-hover"><b>Synopsis :</b><br>{{ anime.synopsis }}</p>
                         </div>
                     </div>
                 {% endfor %}
