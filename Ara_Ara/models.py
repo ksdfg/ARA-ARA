@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -35,6 +36,7 @@ class Review(models.Model):
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.TextField(default="")
+    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], default=5)
 
     class Meta:
         db_table = 'Review'
