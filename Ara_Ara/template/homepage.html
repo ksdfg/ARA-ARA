@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-            <div class="w3-panel w3-card-4 w3-padding w3-theme-dark w3-center w3-row-padding w3-stretch">
-                <h1>Recommended</h1>
-                {% for anime in animes %}
-                    <div class="w3-col l3">
-                        <div class="w3-display-container w3-theme w3-hover-theme w3-card-2 w3-padding w3-margin-bottom">
-                            <img class="w3-image w3-margin-top" src="http://i.imgur.com/0nBFx9r.jpg" alt="image"
-                                 style="max-height: 200px">
-                            <h3>{{ anime.name }}</h3>
-                            <p class="w3-display-hover" aria-haspopup="true"><b>Status
-                                : </b>{{ anime.get_status_display }}</p>
-                            <p class="w3-display-hover"><b>Synopsis :</b><br>{{ anime.synopsis }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
+    <div class="w3-panel w3-card-4 w3-padding w3-theme-dark w3-center w3-row-padding w3-stretch">
+        <h1>Recommended</h1>
+        {% for anime in animes %}
+            <div class="w3-col tooltip" style="width: 25%">
+                <div class="w3-display-container w3-theme w3-hover-theme-dark w3-card-2 w3-padding w3-margin-bottom">
+                    <img class="w3-image w3-margin-top" src="http://i.imgur.com/0nBFx9r.jpg" alt="image"
+                         style="max-height: 200px">
+                    <h3>{{ anime.name }}</h3>
+                    <span class="tooltiptext">
+                            <h4 style="display: inline">Status : </h4>{{ anime.get_status_display }}
+                            <br>
+                            <h4 style="display: inline">Episodes : </h4>{{ anime.total_eps }}
+                            <hr>
+                            <h4>Synopsis :</h4>{{ anime.synopsis }}
+                    </span>
+                </div>
             </div>
+        {% endfor %}
+    </div>
 {% endblock %}

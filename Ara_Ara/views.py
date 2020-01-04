@@ -1,5 +1,3 @@
-from random import choice
-
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -64,8 +62,5 @@ def logout_request(request):
 
 # display homepage
 def homepage(request):
-    animes = [
-        Anime(name="Random Anime", synopsis="".join(["f " for _ in range(choice(range(200)))]))
-        for _ in range(choice(range(10)))
-    ]
+    animes = list(Anime.objects.all()) + list(Anime.objects.all()) + list(Anime.objects.all())
     return render(request, 'homepage.html', {'animes': animes})

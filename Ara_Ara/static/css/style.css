@@ -29,6 +29,12 @@
     transition-duration: 1s;
 }
 
+.w3-hover-theme-dark:hover {
+    color: rgb(201, 197, 190) !important;
+    background-color: rgb(11, 10, 13) !important;
+    transition-duration: 1s;
+}
+
 .w3-hover-text-theme:hover {
     color: #16151d !important;
     transition-duration: 1s;
@@ -322,6 +328,44 @@ footer {
 }
 
 /*-- /materialize stuff for toast --*/
+
+/*-- tooltip classes from w3schools --*/
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 340px;
+    background-color: #fc3955;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #fc3955 transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*-- /tooltip classes from w3schools --*/
 
 /*-- custom classes and tag styles --*/
 
