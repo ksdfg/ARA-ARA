@@ -78,7 +78,7 @@
 <div class="w3-row-padding w3-stretch w3-padding w3-margin">
 
     <!--div where the page content goes-->
-    <div class="w3-container w3-col {% block content-size %}l9{% endblock %}">
+    <div class="w3-col {% block content-size %}l9{% endblock %}">
         {% block content %}
             <h1>This works</h1>
         {% endblock %}
@@ -86,36 +86,30 @@
 
     <!--all the stuff in the "sidebar"-->
     {% block sidebar %}
-        <div class="w3-col l3">
+        <div class="w3-col l3 w3-center">
             <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
                 <h2>Today's Releases</h2>
-                <ul>
+                <ul class="w3-ul w3-padding">
                     {% for anime in animes %}
-                        <li>{{ anime.name }}</li>
+                        <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
+
             <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
-                <h2>Top Currently Airing Anime</h2>
-                <ul>
+                <h2>Ongoing Favourites</h2>
+                <ul class="w3-ul w3-padding">
                     {% for anime in animes %}
-                        <li>{{ anime.name }}</li>
+                        <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
+
             <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
-                <h2>Top Anime of All Time</h2>
-                <ul>
+                <h2>Top Anime</h2>
+                <ul class="w3-ul w3-padding">
                     {% for anime in animes %}
-                        <li>{{ anime.name }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
-                <h2>Waifus that stole our hearts</h2>
-                <ul>
-                    {% for anime in animes %}
-                        <li>{{ anime.name }}</li>
+                        <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

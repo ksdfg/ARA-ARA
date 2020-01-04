@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
@@ -5,28 +7,31 @@ from django.db import models
 
 # Create your models here.
 
+def upload_file(instance, filename):
+    return f"Ara_Ara/anime/{date.today()}_{filename}"
+
+
 class Anime(models.Model):
     name = models.CharField(max_length=100)
     synopsis = models.TextField(default="")
-    poster = models.ImageField(upload_to=f'Ara_Ara/anime/', null=True)
+    poster = models.ImageField(upload_to=upload_file, blank=True, default="Ara_Ara/logo.png")
     status = models.CharField(max_length=1,
-                              choices=(('a', "airing"), ('n', "not yet aired"), ('f', "finished airing")), default='n')
-    start_date = models.DateField(null=True)
-    end_date = models.DateField(null=True)
+                              choices=(('a', "Airing"), ('n', "Not Yet Aired"), ('f', "Finished Airing")), default='n')
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
     season = models.CharField(max_length=2,
-                              choices=(('sp', "spring"), ('sm', "summer"), ('fa', "fall"), ('wn', "winter")), null=True)
+                              choices=(('sp', "Spring"), ('sm', "Summer"), ('fa', "Fall"), ('wn', "Winter")), null=True,
+                              blank=True)
     total_eps = models.IntegerField(default=12)
     aired_eps = models.IntegerField(default=0)
     rating = models.CharField(max_length=4,
                               choices=(
                                   ('g', "General Audiences"),
-                                  ('pg', "Parental Guidance Suggested"),
-                                  ('pg13', "Parents Strongly Cautioned"),
-                                  ('r', " Inappropriate for Audiences under 17"),
-                                  ('nc17', "No One 17 and Under Admitted"),
+                                  ('pg', "Parental Guidance"),
+                                  ('pg13', "Teens - 13 or above"),
+                                  ('r', "Some Mature Content"),
+                                  ('nc17', "Mature - 17 or above"),
                               ), default='g')
-    opening_theme = models.CharField(max_length=50, null=True)
-    ending_theme = models.CharField(max_length=50, null=True)
 
     class Meta:
         db_table = 'Anime'

@@ -9,6 +9,7 @@ from Ara_Ara.models import Anime
 
 
 # Create your views here.
+@login_required
 def view_base(request):
     return render(request, 'base.html')
 
@@ -43,7 +44,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
-                return redirect('homepage')
+                return redirect(request.GET.get('next', '/'))
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -57,10 +58,10 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
-    return redirect('homepage')
+    return redirect('login')
 
 
 # display homepage
 def homepage(request):
-    animes = list(Anime.objects.all()) + list(Anime.objects.all()) + list(Anime.objects.all())
+    animes = Anime.objects.all()
     return render(request, 'homepage.html', {'animes': animes})
