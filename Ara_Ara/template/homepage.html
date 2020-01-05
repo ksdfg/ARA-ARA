@@ -9,14 +9,15 @@
                     <div class="w3-theme w3-hover-theme-dark w3-round-large w3-card-2 w3-padding w3-margin-bottom tooltip"
                          style="height: 100%; width: 100%">
                     <span class="tooltiptext w3-padding w3-ul">
-                        <li><h4>Synopsis</h4></li>
+                        <li><h3>Synopsis</h3></li>
                         <li>{{ anime.synopsis }}</li>
                     </span>
                         <img class="w3-image w3-round-large w3-margin-top w3-margin-bottom" src="{{ anime.poster.url }}"
-                             alt="image"
-                             style="height: 300px">
+                             alt="image" style="height: 300px">
+                        <div style="height: 70px">
+                            <h4 class="fit-content" style="height: 100%; width: 100%">{{ anime.name }}</h4>
+                        </div>
                         <div class="w3-display-hover w3-ul">
-                            <h3>{{ anime.name }}</h3>
                             <li>
                                 <h5 class="w3-display-hover" style="display: inline">Status</h5>
                                 : {{ anime.get_status_display }}
