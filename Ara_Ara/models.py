@@ -13,6 +13,7 @@ def upload_file(instance, filename):
 
 class Anime(models.Model):
     name = models.CharField(max_length=100)
+    genres = models.CharField(max_length=100, null=True, blank=True)
     synopsis = models.TextField(default="")
     poster = models.ImageField(upload_to=upload_file, blank=True, default="Ara_Ara/logo.png")
     status = models.CharField(max_length=1,
@@ -33,6 +34,9 @@ class Anime(models.Model):
                                   ('nc17', "Mature - 17 or above"),
                               ), default='g')
 
+    def __str__(self):
+        return f"Anime ID {self.id} : {self.name}"
+
     class Meta:
         db_table = 'Anime'
 
@@ -42,6 +46,9 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.TextField(default="")
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], default=5)
+
+    def __str__(self):
+        return f"Review ID {self.id} : {self.anime.name} by {self.user.username}"
 
     class Meta:
         db_table = 'Review'
