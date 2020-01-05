@@ -59,6 +59,11 @@
             <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">
                 <b>Profile</b>
             </a>
+            {% if request.user.is_superuser %}
+                <a href="/admin" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">
+                    <b>Admin Page</b>
+                </a>
+            {% endif %}
         {% else %}
             <a href="{% url 'login' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">
                 <b>Login</b>
@@ -87,7 +92,7 @@
     <!--all the stuff in the "sidebar"-->
     {% block sidebar %}
         <div class="w3-col l3 w3-center">
-            <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Today's Releases</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in animes %}
@@ -96,7 +101,7 @@
                 </ul>
             </div>
 
-            <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Ongoing Favourites</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in animes %}
@@ -105,7 +110,7 @@
                 </ul>
             </div>
 
-            <div class="w3-theme-dark w3-display-container w3-panel w3-card-4 w3-margin-left">
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Top Anime</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in animes %}

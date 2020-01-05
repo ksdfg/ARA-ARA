@@ -2,5 +2,4 @@
 *.iml
 __pycache__
 Ara_Ara/migrations
-media
 config.json
