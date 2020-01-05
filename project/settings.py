@@ -15,11 +15,13 @@ from json import load
 
 import connection_url
 
-# import config settings from json or env
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# import config settings from json or env
 data = dict()
-if os.path.exists(r'config.json'):
-    with open('config.json', 'r') as f:
+if os.path.exists(os.path.join(BASE_DIR, 'project', 'config.json')):
+    with open(os.path.join(BASE_DIR, 'project', 'config.json'), 'r') as f:
         data = load(f)
 else:
     try:
@@ -29,9 +31,6 @@ else:
     except KeyError:
         print("You don't have configuration JSON or environment variables set, go away")
         exit(1)
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
