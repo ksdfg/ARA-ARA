@@ -36,6 +36,11 @@
         <a href="{% url 'homepage' %}">
             <img src="{% static 'images/logo.png' %}" alt="Ara Ara" style="width: 120px">
         </a>
+        {% if request.user.is_authenticated and request.user.is_superuser %}
+            <a href="/admin" class="w3-right w3-button w3-padding-large w3-round w3-hover-theme">
+                <i class="material-icons w3-large">supervisor_account</i>
+            </a>
+        {% endif %}
     </div>
 
     <!--Navbar-->
@@ -59,11 +64,6 @@
             <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">
                 <b>Profile</b>
             </a>
-            {% if request.user.is_superuser %}
-                <a href="/admin" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">
-                    <b>Admin Page</b>
-                </a>
-            {% endif %}
         {% else %}
             <a href="{% url 'login' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme">
                 <b>Login</b>
