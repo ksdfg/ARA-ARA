@@ -2,14 +2,35 @@
 
 {% block content %}
     <div class="w3-center"><h1>{{ anime.name }}</h1></div>
-    <div class="w3-row-padding w3-stretch w3-cell-row">
-        <div class="w3-col l3 w3-cell">
-            <img src="{{ anime.poster.url }}" alt="image" style="width: 100%">
+    <div class="w3-cell-row">
+        <div class="w3-cell" style="width: 25%">
+            <img class="w3-round-large" src="{{ anime.poster.url }}" alt="image" style="width: 95%">
         </div>
-        <div class="w3-col l9 w3-cell w3-cell-middle w3-card-4 w3-theme-dark w3-round-large w3-padding">
-            <h2>Synopsis</h2>
-            {{ anime.synopsis }}
+        <div class="w3-cell w3-cell-middle w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large"
+             style="width: 75%">
+            <ul class="w3-ul">
+                <li class="w3-cell-row">
+                    <div class="w3-cell w3-col l4"><h5>Genres</h5>
+                        <p>{{ anime.genres }}</p></div>
+                    <div class="w3-cell w3-col l4"><h5>Duration</h5>
+                        <p>{{ anime.duration }} minutes</div>
+                    <div class="w3-cell w3-col l4"><h5>Rating</h5>
+                        <p>{{ anime.get_rating_display }}</div>
+                </li>
+                <li class="w3-cell-row">
+                    <div class="w3-cell w3-col l4"><h5>Status</h5>
+                        <p>{{ anime.get_status_display }}</p></div>
+                    <div class="w3-cell w3-col l4"><h5>Aired</h5>
+                        <p>{{ anime.start_date }} to {{ anime.end_date }}</p></div>
+                    <div class="w3-cell w3-col l4"><h5>Season</h5>
+                        <p>{{ anime.get_season_display }}</p></div>
+                </li>
+            </ul>
         </div>
+    </div>
+    <div class="w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large w3-margin-top">
+        <h2>Synopsis</h2>
+        {{ anime.synopsis }}
     </div>
 
 {% endblock %}
