@@ -10,8 +10,8 @@
              style="width: 75%">
             <ul class="w3-ul">
                 <li class="w3-cell-row">
-                    <div class="w3-cell w3-col l4"><h5>Genres</h5>
-                        <p>{{ anime.genres }}</p></div>
+                    <div class="w3-cell w3-col l4"><h5>Episodes</h5>
+                        <p>{{ anime.aired_eps }} / {{ anime.total_eps }}</p></div>
                     <div class="w3-cell w3-col l4"><h5>Duration</h5>
                         <p>{{ anime.duration }} minutes</div>
                     <div class="w3-cell w3-col l4"><h5>Rating</h5>
@@ -24,6 +24,10 @@
                         <p>{{ anime.start_date }} to {{ anime.end_date }}</p></div>
                     <div class="w3-cell w3-col l4"><h5>Season</h5>
                         <p>{{ anime.get_season_display }}</p></div>
+                </li>
+                <li class="w3-cell-row">
+                    <h5>Genres</h5>
+                    <p>{{ anime.genres }}</p>
                 </li>
             </ul>
         </div>

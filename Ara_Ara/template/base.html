@@ -96,7 +96,11 @@
                 <h2>Today's Releases</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in ongoing_favourites %}
-                        <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
+                        <li class="w3-hover-theme">
+                            <a href="{% url 'anime details' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -105,7 +109,11 @@
                 <h2>Ongoing Favourites</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in ongoing_favourites %}
-                        <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
+                        <li class="w3-hover-theme">
+                            <a href="{% url 'anime details' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -114,7 +122,11 @@
                 <h2>Top Anime</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in top_anime %}
-                        <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
+                        <li class="w3-hover-theme">
+                            <a href="{% url 'anime details' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

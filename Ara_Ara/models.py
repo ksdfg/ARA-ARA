@@ -14,17 +14,17 @@ def upload_file(instance, filename):
 class Anime(models.Model):
     name = models.CharField(max_length=100)
     genres = models.CharField(max_length=100, null=True, blank=True)
-    synopsis = models.TextField(default="")
+    synopsis = models.TextField(blank=True, default="")
     poster = models.ImageField(upload_to=upload_file, blank=True, default="Ara_Ara/logo.png")
     status = models.CharField(max_length=1,
                               choices=(('a', "Airing"), ('n', "Not Yet Aired"), ('f', "Finished Airing")), default='n')
-    duration = models.IntegerField(null=True)
+    duration = models.IntegerField(null=True, blank=True)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     season = models.CharField(max_length=2,
                               choices=(('sp', "Spring"), ('sm', "Summer"), ('fa', "Fall"), ('wn', "Winter")), null=True,
                               blank=True)
-    total_eps = models.IntegerField(default=12)
+    total_eps = models.IntegerField(default=12, null=True, blank=True)
     aired_eps = models.IntegerField(default=0)
     rating = models.CharField(max_length=4,
                               choices=(
@@ -33,7 +33,8 @@ class Anime(models.Model):
                                   ('pg13', "Teens - 13 or above"),
                                   ('r', "Some Mature Content"),
                                   ('nc17', "Mature - 17 or above"),
-                              ), default='g')
+                                  ('nr', "No Rating"),
+                              ), default='nr')
 
     def __str__(self):
         return f"Anime ID {self.id} : {self.name}"

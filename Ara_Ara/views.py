@@ -9,7 +9,7 @@ from Ara_Ara.models import Anime
 
 context = {
     'top_anime': Anime.objects.all()[:3],
-    'ongoing_favourites': Anime.objects.all()[:4]
+    'ongoing_favourites': Anime.objects.filter(status='a')[:4]
 }
 
 
@@ -69,7 +69,7 @@ def logout_request(request):
 # display homepage
 def homepage(request):
     global context
-    context['animes'] = Anime.objects.all()
+    context['animes'] = Anime.objects.all().order_by('total_eps')[::-1]
     return render(request, 'homepage.html', context)
 
 
