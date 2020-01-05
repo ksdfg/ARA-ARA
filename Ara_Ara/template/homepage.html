@@ -4,23 +4,22 @@
     <div class="w3-panel w3-round-large w3-card-4 w3-padding w3-theme-dark w3-center w3-row-padding w3-stretch">
         <h1>Recommended</h1>
         {% for anime in animes %}
-            <div class="w3-col w3-quarter w3-display-container w3-padding" style="height: 20%">
-                <a href="{% url 'anime details' anime_id=anime.id %}">
-                    <div class="w3-theme w3-hover-theme-dark w3-round-large w3-card-2 w3-padding w3-margin-bottom tooltip">
+            <div class="w3-col w3-quarter w3-display-container w3-padding w3-container w3-cell">
+                <a href="{% url 'anime details' anime_id=anime.id %}" style="height: 100%">
+                    <div class="w3-theme w3-hover-theme-dark w3-round-large w3-card-2 w3-padding w3-margin-bottom tooltip"
+                         style="height: 100%; width: 100%">
                     <span class="tooltiptext w3-padding w3-ul">
                         <li><h4>Synopsis</h4></li>
                         <li>{{ anime.synopsis }}</li>
                     </span>
-                        <img class="w3-image w3-round-large w3-margin-top" src="{{ anime.poster.url }}" alt="image">
-                        <h3>{{ anime.name }}</h3>
-                        <div class="w3-display-hover w3-ul w3-justify">
+                        <img class="w3-image w3-round-large w3-margin-top w3-margin-bottom" src="{{ anime.poster.url }}"
+                             alt="image"
+                             style="height: 300px">
+                        <div class="w3-display-hover w3-ul">
+                            <h3>{{ anime.name }}</h3>
                             <li>
                                 <h5 class="w3-display-hover" style="display: inline">Status</h5>
                                 : {{ anime.get_status_display }}
-                            </li>
-                            <li>
-                                <h5 class="w3-display-hover" style="display: inline">Episodes</h5>
-                                : {{ anime.aired_eps }} / {{ anime.total_eps }}
                             </li>
                             <li>
                                 <h5 class="w3-display-hover" style="display: inline">Genres</h5>
