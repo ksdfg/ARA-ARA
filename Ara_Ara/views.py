@@ -7,6 +7,11 @@ from django.shortcuts import render, redirect
 from Ara_Ara.forms import NewUserForm
 from Ara_Ara.models import Anime
 
+context = {
+    'top_anime': Anime.objects.all()[:3],
+    'ongoing_favourites': Anime.objects.all()[:4]
+}
+
 
 # Create your views here.
 @login_required
@@ -63,5 +68,12 @@ def logout_request(request):
 
 # display homepage
 def homepage(request):
-    animes = Anime.objects.all()
-    return render(request, 'homepage.html', {'animes': animes})
+    global context
+    context['animes'] = Anime.objects.all()
+    return render(request, 'homepage.html', context)
+
+
+def anime_details(request, anime_id):
+    global context
+    context['anime'] = Anime.objects.get(id=anime_id)
+    return render(request, 'anime.html', context)

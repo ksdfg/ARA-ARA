@@ -95,7 +95,7 @@
             <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Today's Releases</h2>
                 <ul class="w3-ul w3-padding">
-                    {% for anime in animes %}
+                    {% for anime in ongoing_favourites %}
                         <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
                     {% endfor %}
                 </ul>
@@ -104,7 +104,7 @@
             <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Ongoing Favourites</h2>
                 <ul class="w3-ul w3-padding">
-                    {% for anime in animes %}
+                    {% for anime in ongoing_favourites %}
                         <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
                     {% endfor %}
                 </ul>
@@ -113,7 +113,7 @@
             <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Top Anime</h2>
                 <ul class="w3-ul w3-padding">
-                    {% for anime in animes %}
+                    {% for anime in top_anime %}
                         <li class="w3-hover-theme"><a href="{% url 'base' %}">{{ anime.name }}</a></li>
                     {% endfor %}
                 </ul>

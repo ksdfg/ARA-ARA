@@ -18,6 +18,7 @@ class Anime(models.Model):
     poster = models.ImageField(upload_to=upload_file, blank=True, default="Ara_Ara/logo.png")
     status = models.CharField(max_length=1,
                               choices=(('a', "Airing"), ('n', "Not Yet Aired"), ('f', "Finished Airing")), default='n')
+    duration = models.IntegerField(null=True)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     season = models.CharField(max_length=2,
