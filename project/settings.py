@@ -11,6 +11,24 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from json import load
+
+import connection_url
+
+# import config settings from json or env
+
+data = dict()
+if os.path.exists(r'config.json'):
+    with open('config.json', 'r') as f:
+        data = load(f)
+else:
+    try:
+        data = {
+            "DATABASE_URL": os.environ["DATABASE_URL"]
+        }
+    except KeyError:
+        print("You don't have configuration JSON or environment variables set, go away")
+        exit(1)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,12 +93,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Ara_Ara',
-        'USER': 'root',
-        'PASSWORD': 'kshitish1247',
-    }
+    'default': connection_url.config(data["DATABASE_URL"])
 }
 
 # Password validation
