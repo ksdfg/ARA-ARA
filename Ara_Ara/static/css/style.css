@@ -40,6 +40,11 @@
     transition-duration: 1s;
 }
 
+.w3-hover-text-theme-red:hover {
+    color: #fc3955 !important;
+    transition-duration: 1s;
+}
+
 .w3-hover-border-theme:hover {
     border-color: #16151d !important;
     transition-duration: 1s;
