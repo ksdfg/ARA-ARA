@@ -77,7 +77,6 @@ p.w3l-register-p {
 
 .w3l-login-form {
     background: rgba(0, 0, 0, 0.4117647058823529);
-    max-width: 500px;
     margin: 0 auto;
     padding: 3em;
     border-radius: 10px;
@@ -111,7 +110,8 @@ p.w3l-register-p {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea {
     width: 100%;
     border: none;
     box-sizing: border-box;
@@ -120,7 +120,8 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+textarea:focus {
     outline: none;
 }
 

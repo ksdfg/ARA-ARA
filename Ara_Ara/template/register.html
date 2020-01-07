@@ -3,7 +3,7 @@
 {% block content-size %}l12{% endblock %}
 {% block content %}
     <!--suppress HtmlFormInputWithoutLabel -->
-    <div class=" w3l-login-form">
+    <div class=" w3l-login-form" style="max-width: 500px">
         <h2 class="fit-content center">Register</h2>
         <form method="POST">
             {% csrf_token %}    <!--requirement of django; here for security-->

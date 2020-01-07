@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <!--suppress HtmlFormInputWithoutLabel -->
     <div class="w3-center"><h1>{{ anime.name }}</h1></div>
     <div class="w3-cell-row">
         <div class="w3-cell" style="width: 25%">
@@ -35,6 +36,23 @@
     <div class="w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large w3-margin-top">
         <h2>Synopsis</h2>
         {{ anime.synopsis }}
+    </div>
+    <div class="w3-panel w3l-login-form w3-margin-top" style="width: 100%">
+        <form action="{% url 'anime reviews' anime_id=anime.id %}" method="post">
+            <h2 class="fit-content center">Your Review</h2>
+
+            <!--review field-->
+            <div class="w3l-form-group">
+                <div class="group">
+                    <i class="material-icons icon">create</i>
+                    <textarea style="width: available; width: -moz-available"
+                              name="review" id="id_review" placeholder="Write your review here..." rows="5"
+                              required></textarea>
+                </div>
+            </div>
+
+            <button type="submit">Submit Review</button>    <!--submit button-->
+        </form>
     </div>
 
 {% endblock %}
