@@ -23,6 +23,6 @@ urlpatterns = [
     path('accounts/login/', views.login_request, name='login'),
     path('accounts/logout', views.logout_request, name='logout'),
     path('accounts/register', views.register_request, name='register'),
-    path('anime?<anime_id>', views.anime_details, name='anime details'),
-    path('anime?<anime_id>/reviews', views.anime_details, name='anime reviews'),
+    path('anime?<anime_id>', views.anime_details, name='anime'),
+    path('review', views.review, name='review'),
 ]

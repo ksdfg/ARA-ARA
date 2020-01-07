@@ -1,7 +1,6 @@
 from datetime import date
 
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -47,7 +46,20 @@ class Review(models.Model):
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.TextField(default="")
-    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], default=5)
+    score = models.IntegerField(
+        choices=(
+            (10, "10 (Masterpiece)"),
+            (9, "9 (Great)"),
+            (8, "8 (Very Good)"),
+            (7, "7 (Good)"),
+            (6, "6 (Fine)"),
+            (5, "5 (Average)"),
+            (4, "4 (Bad)"),
+            (3, "3 (Very Bad)"),
+            (2, "2 (Horrible)"),
+            (1, "1 (Appalling)"),
+        ), default=5
+    )
 
     def __str__(self):
         return f"Review ID {self.id} : {self.anime.name} by {self.user.username}"

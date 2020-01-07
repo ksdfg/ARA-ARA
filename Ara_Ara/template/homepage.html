@@ -5,7 +5,7 @@
         <h1>Recommended</h1>
         {% for anime in animes %}
             <div class="w3-col w3-quarter w3-display-container w3-padding w3-container w3-cell">
-                <a href="{% url 'anime details' anime_id=anime.id %}" style="height: 100%">
+                <a href="{% url 'anime' anime_id=anime.id %}" style="height: 100%">
                     <div class="w3-theme w3-hover-theme-dark w3-round-large w3-card-2 w3-padding w3-margin-bottom tooltip"
                          style="height: 100%; width: 100%">
                         <span class="tooltiptext w3-padding w3-ul" style="opacity: 0.9">

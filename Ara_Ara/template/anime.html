@@ -38,47 +38,70 @@
         {{ anime.synopsis }}
     </div>
 
+    <style>
+        .w3-hover-theme:hover h4 {
+            color: #fc3955;
+        }
+    </style>
+    <div class="w3-center w3-margin-top w3-row-padding w3-stretch">
+        <div class="w3-col w3-half">
+            <div class="w3-card-4 w3-theme-dark w3-round-large w3-padding-large">
+                <h2>Staff Reviews</h2>
+                <hr>
+                {% for review in staff_reviews %}
+                    <div class="w3-display-container w3-hover-shadow w3-hover-theme w3-round w3-padding-large w3-margin">
+                        <h4 class="">
+                            {{ review.user.first_name }} {{ review.user.last_name }} rated this
+                            a {{ review.get_score_display }}
+                        </h4>
+                        <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
+                            <hr>
+                            {{ review.review }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <footer class="w3-container">
+                    <p style="color: #fc3955">Click on the reviews to view them in detail</p>
+                </footer>
+            </div>
+        </div>
+        <div class="w3-col w3-half">
+            <div class="w3-card-4 w3-theme-dark w3-round-large w3-padding-large">
+                <h2>User Reviews</h2>
+                <hr>
+                {% for review in user_reviews %}
+                    <div class="w3-display-container w3-hover-shadow w3-hover-theme w3-round w3-padding-large w3-margin">
+                        <h4 class="">
+                            {{ review.user.first_name }} {{ review.user.last_name }} rated this
+                            a {{ review.get_score_display }}
+                        </h4>
+                        <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
+                            <hr>
+                            {{ review.review }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <footer class="w3-container">
+                    <p style="color: #fc3955">Click on the reviews to view them in detail</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
     {% if request.user.is_authenticated %}
         <div class="w3-center w3l-login-form" style="width: 100%; margin-top: 7%">
-            <form action="{% url 'anime reviews' anime_id=anime.id %}" method="post">
+            <form action="{% url 'review' %}" method="post">
                 {% csrf_token %}
                 <h2 class="w3-margin-bottom">Your Review</h2>
 
-                <!--rating field-->
+                <!--score field-->
                 <div class="w3l-form-group">
                     <div class="group">
                         <i class="material-icons icon">star</i>
-                        <select class="w3-center" style="appearance: none; -moz-appearance: none">
-                            <option class="w3-theme" value="10">
-                                10 (Masterpiece)
-                            </option>
-                            <option class="w3-theme" value="9">
-                                9 (Great)
-                            </option>
-                            <option class="w3-theme" value="8">
-                                8 (Very Good)
-                            </option>
-                            <option class="w3-theme" value="7">
-                                7 (Good)
-                            </option>
-                            <option class="w3-theme" value="6">
-                                6 (Fine)
-                            </option>
-                            <option class="w3-theme" value="5">
-                                5 (Average)
-                            </option>
-                            <option class="w3-theme" value="4">
-                                4 (Bad)
-                            </option>
-                            <option class="w3-theme" value="3">
-                                3 (Very Bad)
-                            </option>
-                            <option class="w3-theme" value="2">
-                                2 (Horrible)
-                            </option>
-                            <option class="w3-theme" value="1">
-                                1 (Appalling)
-                            </option>
+                        <select name="score" class="w3-center" style="appearance: none; -moz-appearance: none">
+                            {% for score in scores %}
+                                <option value="{{ score.0 }}" selected>{{ score.1 }}</option>
+                            {% endfor %}
                         </select>
                         <i class="material-icons icon">arrow_drop_down</i>
                     </div>
@@ -91,6 +114,8 @@
                         <textarea name="review" id="id_review" placeholder="Write your review here" rows="5"></textarea>
                     </div>
                 </div>
+
+                <input name="anime_id" value="{{ anime.id }}" style="display: none">
 
                 <button type="submit">Submit Review</button>    <!--submit button-->
             </form>

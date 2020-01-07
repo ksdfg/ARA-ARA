@@ -100,7 +100,7 @@
                 <ul class="w3-ul w3-padding">
                     {% for anime in ongoing_favourites %}
                         <li class="w3-hover-theme-red">
-                            <a href="{% url 'anime details' anime_id=anime.id %}">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
                                 {{ anime.name }}
                             </a>
                         </li>
@@ -113,7 +113,7 @@
                 <ul class="w3-ul w3-padding">
                     {% for anime in ongoing_favourites %}
                         <li class="w3-hover-theme-red">
-                            <a href="{% url 'anime details' anime_id=anime.id %}">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
                                 {{ anime.name }}
                             </a>
                         </li>
@@ -126,7 +126,7 @@
                 <ul class="w3-ul w3-padding">
                     {% for anime in top_anime %}
                         <li class="w3-hover-theme-red">
-                            <a href="{% url 'anime details' anime_id=anime.id %}">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
                                 {{ anime.name }}
                             </a>
                         </li>
