@@ -24,6 +24,12 @@
 }
 
 .w3-hover-theme:hover {
+    color: rgb(201, 197, 190) !important;
+    background-color: #16151d !important;
+    transition-duration: 1s;
+}
+
+.w3-hover-theme-red:hover {
     color: #ffffff !important;
     background-color: #fc3955 !important;
     transition-duration: 1s;
@@ -111,7 +117,8 @@ p.w3l-register-p {
 
 input[type="text"],
 input[type="password"],
-textarea {
+textarea,
+select {
     width: 100%;
     border: none;
     box-sizing: border-box;
@@ -121,7 +128,8 @@ textarea {
 
 input[type="text"]:focus,
 input[type="password"]:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     outline: none;
 }
 

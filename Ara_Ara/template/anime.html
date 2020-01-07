@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
     <!--suppress HtmlFormInputWithoutLabel -->
     <div class="w3-center"><h1>{{ anime.name }}</h1></div>
     <div class="w3-cell-row">
-        <div class="w3-cell" style="width: 25%">
+        <div class="w3-cell" style="xwidth: 25%">
             <img class="w3-round-large" src="{{ anime.poster.url }}" alt="image" style="width: 95%">
         </div>
         <div class="w3-cell w3-cell-middle w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large"
@@ -44,6 +43,46 @@
             <form action="{% url 'anime reviews' anime_id=anime.id %}" method="post">
                 {% csrf_token %}
                 <h2 class="w3-margin-bottom">Your Review</h2>
+
+                <!--rating field-->
+                <div class="w3l-form-group">
+                    <div class="group">
+                        <i class="material-icons icon">star</i>
+                        <select class="w3-center" style="appearance: none; -moz-appearance: none">
+                            <option class="w3-theme" value="10">
+                                10 (Masterpiece)
+                            </option>
+                            <option class="w3-theme" value="9">
+                                9 (Great)
+                            </option>
+                            <option class="w3-theme" value="8">
+                                8 (Very Good)
+                            </option>
+                            <option class="w3-theme" value="7">
+                                7 (Good)
+                            </option>
+                            <option class="w3-theme" value="6">
+                                6 (Fine)
+                            </option>
+                            <option class="w3-theme" value="5">
+                                5 (Average)
+                            </option>
+                            <option class="w3-theme" value="4">
+                                4 (Bad)
+                            </option>
+                            <option class="w3-theme" value="3">
+                                3 (Very Bad)
+                            </option>
+                            <option class="w3-theme" value="2">
+                                2 (Horrible)
+                            </option>
+                            <option class="w3-theme" value="1">
+                                1 (Appalling)
+                            </option>
+                        </select>
+                        <i class="material-icons icon">arrow_drop_down</i>
+                    </div>
+                </div>
 
                 <!--review field-->
                 <div class="w3l-form-group">
