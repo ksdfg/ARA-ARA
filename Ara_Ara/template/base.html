@@ -16,6 +16,7 @@
 
     <!--load our own css and JavaScript-->
     {% load static %}
+    {% get_media_prefix as media %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!--load icon for tab-->
@@ -29,7 +30,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
-<body class="w3-theme">
+<body class="w3-theme"
+      style="background-image: url({{ media }}/Ara_Ara/logo.png);
+              background-position: right bottom; background-repeat: no-repeat; background-size: auto; background-attachment: fixed;">
 
 <div class="w3-theme-dark">
     <!--Header - logos and stuff go here-->
@@ -136,10 +139,6 @@
         </div>
     {% endblock %}
 
-</div>
-
-
-<div class="w3-padding w3-center w3-margin-left w3-margin-right">
 </div>
 </body>
 </html>
