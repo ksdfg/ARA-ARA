@@ -374,11 +374,11 @@ h1, h2, h3, h4, h5, h6, a {
 }
 
 .display-card {
-    background: rgba(22, 21, 29, 0.6);
+    background: rgba(22, 21, 29, 0.8);
 }
 
 .display-card:hover {
-    background: rgba(11, 10, 13, 0.6);
+    background: rgba(11, 10, 13, 0.8);
     transition-duration: 1s;
 }
 
