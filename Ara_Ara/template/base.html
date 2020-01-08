@@ -27,50 +27,51 @@
 
     <!--Extra stuff in head (diff per page)-->{% block head %}{% endblock %}
 
+    <style>
+        .header a {
+            margin-top: 113px;
+        }
+    </style>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
 <body class="w3-theme">
 
-<div class="w3-theme-dark">
-    <!--Header - logos and stuff go here-->
-    <div class="w3-container w3-padding w3-center">
-        <a href="{% url 'homepage' %}">
-            <img class="w3-round" src="{% static 'images/logo.png' %}" alt="Ara Ara" style="height: 150px;">
-        </a>
-    </div>
+<div class="w3-theme-dark w3-display-container">
+    <a class="w3-display-middle" href="{% url 'homepage' %}">
+        <img class="w3-round" src="{% static 'images/logo.png' %}" alt="Ara Ara" style="height: 130px;">
+    </a>
 
     <!--Navbar-->
-    <div class="w3-bar">
+    <div class="w3-bar header" style="height: 150px">
         <a href="{% url 'base' %}" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme-red">
-            <i>All Shows</i>
+            All Shows
         </a>
         <a href="javascript:void(0)" class="w3-col l1 w3-bar-item w3-button w3-round w3-hover-theme-red">
-            <i>Search</i>
+            Search
         </a>
         <a href="{% url 'register' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
-            <i>Register</i>
+            Register
         </a>
         {% if request.user.is_authenticated %}
             <a href="{% url 'logout' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
-                <i>Logout</i>
+                Logout
             </a>
-            <div class="w3-display-container">
-                <a href="javascript:void(0)"
-                   class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
-                    <i>Profile</i>
+            <a href="javascript:void(0)"
+               class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
+                Profile
+            </a>
+            {% if request.user.is_staff %}
+                <a href="/admin" class="w3-right w3-display-hover" style="margin-right: 3.5%">
+                    <i class="material-icons w3-hover-text-theme-red w3-bar-item" style="position: absolute">
+                        how_to_reg
+                    </i>
                 </a>
-                {% if request.user.is_staff %}
-                    <a href="/admin" class="w3-right w3-display-hover" style="margin-right: 3.5%">
-                        <i class="material-icons w3-hover-text-theme-red w3-bar-item" style="position: absolute">
-                            how_to_reg
-                        </i>
-                    </a>
-                {% endif %}
-            </div>
+            {% endif %}
         {% else %}
             <a href="{% url 'login' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
-                <i>Login</i>
+                Login
             </a>
         {% endif %}
     </div>
@@ -95,46 +96,57 @@
 
     <!--all the stuff in the "sidebar"-->
     {% block sidebar %}
-        <div style="position: -webkit-sticky; position: sticky; top: 0">
-            <div class="w3-col l3 w3-center">
-                <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
-                    <h2>Today's Releases</h2>
-                    <ul class="w3-ul w3-padding">
-                        {% for anime in ongoing_favourites %}
-                            <li class="w3-hover-theme-red">
-                                <a href="{% url 'anime' anime_id=anime.id %}">
-                                    {{ anime.name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+        <div class="w3-col l3 w3-center">
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+                <h2>Today's Releases</h2>
+                <ul class="w3-ul w3-padding">
+                    {% for anime in ongoing_favourites %}
+                        <li class="w3-hover-theme-red">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-                <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
-                    <h2>Ongoing Favourites</h2>
-                    <ul class="w3-ul w3-padding">
-                        {% for anime in ongoing_favourites %}
-                            <li class="w3-hover-theme-red">
-                                <a href="{% url 'anime' anime_id=anime.id %}">
-                                    {{ anime.name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+                <h2>Ongoing Favourites</h2>
+                <ul class="w3-ul w3-padding">
+                    {% for anime in ongoing_favourites %}
+                        <li class="w3-hover-theme-red">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-                <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
-                    <h2>Top Anime</h2>
-                    <ul class="w3-ul w3-padding">
-                        {% for anime in top_anime %}
-                            <li class="w3-hover-theme-red">
-                                <a href="{% url 'anime' anime_id=anime.id %}">
-                                    {{ anime.name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+                <h2>Top Anime</h2>
+                <ul class="w3-ul w3-padding">
+                    {% for anime in top_anime %}
+                        <li class="w3-hover-theme-red">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+                <h2>Top Anime</h2>
+                <ul class="w3-ul w3-padding">
+                    {% for anime in top_anime %}
+                        <li class="w3-hover-theme-red">
+                            <a href="{% url 'anime' anime_id=anime.id %}">
+                                {{ anime.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     {% endblock %}
