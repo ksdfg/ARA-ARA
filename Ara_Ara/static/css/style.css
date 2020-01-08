@@ -370,7 +370,28 @@ h1, h2, h3, h4, h5, h6, a {
 }
 
 .translucent {
-    background: rgba(11, 10, 13, 0.95);
+    background: rgba(11, 10, 13, 0.9);
+}
+
+.display-card {
+    background: rgba(22, 21, 29, 0.6);
+}
+
+.display-card:hover {
+    background: rgba(11, 10, 13, 0.6);
+    transition-duration: 1s;
+}
+
+.display-card:hover h6 {
+    color: #fc3955;
+    transition-duration: 1s;
+}
+
+body {
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
 }
 
 /*-- /custom classes and tag styles --*/

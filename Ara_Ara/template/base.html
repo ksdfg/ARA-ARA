@@ -16,7 +16,6 @@
 
     <!--load our own css and JavaScript-->
     {% load static %}
-    {% get_media_prefix as media %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!--load icon for tab-->
@@ -37,8 +36,7 @@
 </head>
 
 <body class="w3-theme"
-      style="background-image: url({{ media }}/Ara_Ara/bg.png);
-              background-position: right bottom; background-repeat: no-repeat; background-size: auto; background-attachment: fixed;">
+      style="background-image: url({% static 'images/akeno.png' %});">
 
 <div class="w3-theme-dark w3-display-container">
     <a class="w3-display-middle" href="{% url 'homepage' %}">
