@@ -35,7 +35,7 @@
     </div>
     <div class="w3-center w3-card-4 translucent w3-round-large w3-padding-large w3-margin-top">
         <h2>Synopsis</h2>
-        {{ anime.synopsis }}
+        {{ anime.synopsis|safe }}
     </div>
 
     <style>
@@ -56,7 +56,7 @@
                         </h4>
                         <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
                             <hr>
-                            {{ review.review }}
+                            {{ review.review|safe }}
                         </div>
                     </div>
                 {% endfor %}
@@ -75,9 +75,9 @@
                             {{ review.user.first_name }} {{ review.user.last_name }} rated this
                             a {{ review.get_score_display }}
                         </h4>
-                        <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
+                        <div class="w3-display-hover">
                             <hr>
-                            <p>{{ review.review|safe }}</p>
+                            <p style="max-height: 400px; overflow: scroll">{{ review.review|safe }}</p>
                         </div>
                     </div>
                 {% endfor %}
