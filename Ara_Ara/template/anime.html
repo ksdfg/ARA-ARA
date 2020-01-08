@@ -7,7 +7,7 @@
         <div class="w3-cell" style="xwidth: 25%">
             <img class="w3-round-large" src="{{ anime.poster.url }}" alt="image" style="width: 95%">
         </div>
-        <div class="w3-cell w3-cell-middle w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large"
+        <div class="w3-cell w3-cell-middle w3-center w3-card-4 translucent w3-round-large w3-padding-large"
              style="width: 75%">
             <ul class="w3-ul">
                 <li class="w3-cell-row">
@@ -33,7 +33,7 @@
             </ul>
         </div>
     </div>
-    <div class="w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large w3-margin-top">
+    <div class="w3-center w3-card-4 translucent w3-round-large w3-padding-large w3-margin-top">
         <h2>Synopsis</h2>
         {{ anime.synopsis }}
     </div>
@@ -45,7 +45,7 @@
     </style>
     <div class="w3-center w3-margin-top w3-row-padding w3-stretch">
         <div class="w3-col w3-half">
-            <div class="w3-card-4 w3-theme-dark w3-round-large w3-padding-large">
+            <div class="w3-card-4 translucent w3-round-large w3-padding-large">
                 <h2>Staff Reviews</h2>
                 <hr>
                 {% for review in staff_reviews %}
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="w3-col w3-half">
-            <div class="w3-card-4 w3-theme-dark w3-round-large w3-padding-large">
+            <div class="w3-card-4 translucent w3-round-large w3-padding-large">
                 <h2>User Reviews</h2>
                 <hr>
                 {% for review in user_reviews %}

@@ -31,7 +31,7 @@
 </head>
 
 <body class="w3-theme"
-      style="background-image: url({{ media }}/Ara_Ara/logo.png);
+      style="background-image: url({{ media }}/Ara_Ara/bg.png);
               background-position: right bottom; background-repeat: no-repeat; background-size: auto; background-attachment: fixed;">
 
 <div class="w3-theme-dark">
@@ -98,7 +98,7 @@
     <!--all the stuff in the "sidebar"-->
     {% block sidebar %}
         <div class="w3-col l3 w3-center">
-            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+            <div class="translucent w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Today's Releases</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in ongoing_favourites %}
@@ -111,7 +111,7 @@
                 </ul>
             </div>
 
-            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+            <div class="translucent w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Ongoing Favourites</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in ongoing_favourites %}
@@ -124,7 +124,7 @@
                 </ul>
             </div>
 
-            <div class="w3-theme-dark w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
+            <div class="translucent w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Top Anime</h2>
                 <ul class="w3-ul w3-padding">
                     {% for anime in top_anime %}
