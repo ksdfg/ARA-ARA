@@ -79,7 +79,6 @@ def anime_details(request, anime_id):
     context['user_reviews'] = Review.objects.filter(anime=context['anime'], user__is_staff=False)[:3]
     context['staff_reviews'] = Review.objects.filter(anime=context['anime'], user__is_staff=True)[:3]
     context['scores'] = Review._meta.get_field('score').choices[::-1]
-    print(context)
     return render(request, 'anime.html', context)
 
 
@@ -89,7 +88,7 @@ def review(request):
             anime=Anime.objects.get(id=request.POST['anime_id']),
             user=request.user,
             score=request.POST['score'],
-            review=request.POST['review']
+            review=request.POST['review'].replace('\n', '<br/>')
         )
         new_review.save()
         messages.success(request, f"Review for {new_review.anime} added!")
