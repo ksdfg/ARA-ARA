@@ -24,6 +24,12 @@
 }
 
 .w3-hover-theme:hover {
+    color: rgb(201, 197, 190) !important;
+    background-color: #16151d !important;
+    transition-duration: 1s;
+}
+
+.w3-hover-theme-red:hover {
     color: #ffffff !important;
     background-color: #fc3955 !important;
     transition-duration: 1s;
@@ -77,7 +83,6 @@ p.w3l-register-p {
 
 .w3l-login-form {
     background: rgba(0, 0, 0, 0.4117647058823529);
-    max-width: 500px;
     margin: 0 auto;
     padding: 3em;
     border-radius: 10px;
@@ -111,7 +116,9 @@ p.w3l-register-p {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea,
+select {
     width: 100%;
     border: none;
     box-sizing: border-box;
@@ -120,7 +127,9 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
     outline: none;
 }
 
@@ -358,6 +367,31 @@ h1, h2, h5 {
 
 h1, h2, h3, h4, h5, h6, a {
     font-family: 'Raleway', sans-serif;
+}
+
+.translucent {
+    background: rgba(11, 10, 13, 0.9);
+}
+
+.display-card {
+    background: rgba(22, 21, 29, 0.8);
+}
+
+.display-card:hover {
+    background: rgba(11, 10, 13, 0.8);
+    transition-duration: 1s;
+}
+
+.display-card:hover h6 {
+    color: #fc3955;
+    transition-duration: 1s;
+}
+
+body {
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
 }
 
 /*-- /custom classes and tag styles --*/

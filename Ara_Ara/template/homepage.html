@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="w3-panel w3-round-large w3-card-4 w3-padding w3-theme-dark w3-center w3-row-padding w3-stretch">
+    <div class="w3-panel w3-round-large w3-card-4 w3-padding translucent w3-center w3-row-padding w3-stretch">
         <h1>Recommended</h1>
         {% for anime in animes %}
             <div class="w3-col w3-quarter w3-display-container w3-padding w3-container w3-cell">
-                <a href="{% url 'anime details' anime_id=anime.id %}" style="height: 100%">
-                    <div class="w3-theme w3-hover-theme-dark w3-round-large w3-card-2 w3-padding w3-margin-bottom tooltip"
+                <a href="{% url 'anime' anime_id=anime.id %}" style="height: 100%">
+                    <div class="display-card w3-round-large w3-card-2 w3-padding w3-margin-bottom tooltip"
                          style="height: 100%; width: 100%">
-                        <span class="tooltiptext w3-padding w3-ul" style="opacity: 0.9">
+                        <span class="tooltiptext w3-padding w3-ul" style="background: rgba(252, 57, 85, 0.93)">
                             <li>
                                 <h5 style="display: inline; color: white">Status</h5> : {{ anime.get_status_display }}
                             </li>
@@ -22,7 +22,7 @@
                         <img class="w3-image w3-round-large w3-margin-top w3-margin-bottom" src="{{ anime.poster.url }}"
                              alt="image" style="height: 280px">
                         <div style="height: 70px">
-                            <p class="fit-content" style="height: 100%; width: 100%">{{ anime.name }}</p>
+                            <h6 class="fit-content" style="height: 100%; width: 100%">{{ anime.name }}</h6>
                         </div>
                         <div class="w3-display-hover w3-ul">
                         </div>

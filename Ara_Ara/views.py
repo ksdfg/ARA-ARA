@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 from Ara_Ara.forms import NewUserForm
-from Ara_Ara.models import Anime
+from Ara_Ara.models import Anime, Review
 
 context = {
     'top_anime': Anime.objects.all()[:3],
@@ -76,4 +76,21 @@ def homepage(request):
 def anime_details(request, anime_id):
     global context
     context['anime'] = Anime.objects.get(id=anime_id)
+    context['user_reviews'] = Review.objects.filter(anime=context['anime'], user__is_staff=False)[:3]
+    context['staff_reviews'] = Review.objects.filter(anime=context['anime'], user__is_staff=True)[:3]
+    context['scores'] = Review._meta.get_field('score').choices[::-1]
+    print(context)
     return render(request, 'anime.html', context)
+
+
+def review(request):
+    if request.method == 'POST':
+        new_review = Review(
+            anime=Anime.objects.get(id=request.POST['anime_id']),
+            user=request.user,
+            score=request.POST['score'],
+            review=request.POST['review']
+        )
+        new_review.save()
+        messages.success(request, f"Review for {new_review.anime} added!")
+        return anime_details(request, anime_id=new_review.anime.id)

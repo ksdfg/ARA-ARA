@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <!--suppress HtmlFormInputWithoutLabel -->
     <div class="w3-center"><h1>{{ anime.name }}</h1></div>
     <div class="w3-cell-row">
-        <div class="w3-cell" style="width: 25%">
+        <div class="w3-cell w3-cell-middle" style="xwidth: 25%">
             <img class="w3-round-large" src="{{ anime.poster.url }}" alt="image" style="width: 95%">
         </div>
-        <div class="w3-cell w3-cell-middle w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large"
+        <div class="w3-cell w3-cell-middle w3-center w3-card-4 translucent w3-round-large w3-padding-large"
              style="width: 75%">
             <ul class="w3-ul">
                 <li class="w3-cell-row">
@@ -32,9 +33,93 @@
             </ul>
         </div>
     </div>
-    <div class="w3-center w3-card-4 w3-theme-dark w3-round-large w3-padding-large w3-margin-top">
+    <div class="w3-center w3-card-4 translucent w3-round-large w3-padding-large w3-margin-top">
         <h2>Synopsis</h2>
         {{ anime.synopsis }}
     </div>
+
+    <style>
+        .w3-hover-theme:hover h4 {
+            color: #fc3955;
+        }
+    </style>
+    <div class="w3-center w3-margin-top w3-row-padding w3-stretch">
+        <div class="w3-col w3-half">
+            <div class="w3-card-4 translucent w3-round-large w3-padding-large">
+                <h2>Staff Reviews</h2>
+                <hr>
+                {% for review in staff_reviews %}
+                    <div class="w3-display-container w3-hover-shadow w3-hover-theme w3-round w3-padding-large w3-margin">
+                        <h4 class="">
+                            {{ review.user.first_name }} {{ review.user.last_name }} rated this
+                            a {{ review.get_score_display }}
+                        </h4>
+                        <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
+                            <hr>
+                            {{ review.review }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <footer class="w3-container">
+                    <p style="color: #fc3955">Click on the reviews to view them in detail</p>
+                </footer>
+            </div>
+        </div>
+        <div class="w3-col w3-half">
+            <div class="w3-card-4 translucent w3-round-large w3-padding-large">
+                <h2>User Reviews</h2>
+                <hr>
+                {% for review in user_reviews %}
+                    <div class="w3-display-container w3-hover-shadow w3-hover-theme w3-round w3-padding-large w3-margin">
+                        <h4 class="">
+                            {{ review.user.first_name }} {{ review.user.last_name }} rated this
+                            a {{ review.get_score_display }}
+                        </h4>
+                        <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
+                            <hr>
+                            {{ review.review }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <footer class="w3-container">
+                    <p style="color: #fc3955">Click on the reviews to view them in detail</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    {% if request.user.is_authenticated %}
+        <div class="w3-center w3l-login-form" style="width: 100%; margin-top: 7%">
+            <form action="{% url 'review' %}" method="post">
+                {% csrf_token %}
+                <h2 class="w3-margin-bottom">Your Review</h2>
+
+                <!--score field-->
+                <div class="w3l-form-group">
+                    <div class="group">
+                        <i class="material-icons icon">star</i>
+                        <select name="score" class="w3-center" style="appearance: none; -moz-appearance: none">
+                            {% for score in scores %}
+                                <option value="{{ score.0 }}" selected>{{ score.1 }}</option>
+                            {% endfor %}
+                        </select>
+                        <i class="material-icons icon">arrow_drop_down</i>
+                    </div>
+                </div>
+
+                <!--review field-->
+                <div class="w3l-form-group">
+                    <div class="group">
+                        <i class="material-icons icon">create</i>
+                        <textarea name="review" id="id_review" placeholder="Write your review here" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <input name="anime_id" value="{{ anime.id }}" style="display: none">
+
+                <button type="submit">Submit Review</button>    <!--submit button-->
+            </form>
+        </div>
+    {% endif %}
 
 {% endblock %}
