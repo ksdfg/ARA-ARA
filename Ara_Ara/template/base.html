@@ -63,7 +63,7 @@
                 Profile
             </a>
             {% if request.user.is_staff %}
-                <a href="/admin" class="w3-right w3-display-hover" style="margin-right: 3.5%">
+                <a href="{% url 'admin:index' %}" class="w3-right w3-display-hover" style="margin-right: 3.5%">
                     <i class="material-icons w3-hover-text-theme-red w3-bar-item" style="position: absolute">
                         how_to_reg
                     </i>
