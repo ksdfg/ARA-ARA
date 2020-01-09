@@ -95,7 +95,7 @@ def review(request):
             anime=Anime.objects.get(id=request.POST['anime_id']),
             user=request.user,
             score=request.POST['score'],
-            review=request.POST['review'].replace('\n', '<br/>')
+            review=request.POST['review']
         )
         new_review.save()
         messages.success(request, f"Review for {new_review.anime} added!")

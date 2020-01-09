@@ -35,6 +35,10 @@ class Anime(models.Model):
                                   ('nr', "No Rating"),
                               ), default='nr')
 
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.synopsis = self.synopsis.replace("\n", "<br/>")
+        super(Anime, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
+
     def __str__(self):
         return f"Anime ID {self.id} : {self.name}"
 
@@ -60,6 +64,10 @@ class Review(models.Model):
             (1, "1 (Appalling)"),
         ), default=5
     )
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.review = self.review.replace("\n", "<br/>")
+        super(Review, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
 
     def __str__(self):
         return f"Review ID {self.id} : {self.anime.name} by {self.user.username}"
