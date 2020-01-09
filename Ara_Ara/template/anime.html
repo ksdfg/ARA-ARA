@@ -4,7 +4,7 @@
     <!--suppress HtmlFormInputWithoutLabel -->
     <div class="w3-center"><h1>{{ anime.name }}</h1></div>
     <div class="w3-cell-row">
-        <div class="w3-cell w3-cell-middle" style="xwidth: 25%">
+        <div class="w3-cell w3-cell-middle" style="width: 25%">
             <img class="w3-round-large" src="{{ anime.poster.url }}" alt="image" style="width: 95%">
         </div>
         <div class="w3-cell w3-cell-middle w3-center w3-card-4 translucent w3-round-large w3-padding-large"
@@ -54,14 +54,18 @@
                             {{ review.user.first_name }} {{ review.user.last_name }} rated this
                             a {{ review.get_score_display }}
                         </h4>
-                        <div class="w3-display-hover" style="max-height: 400px; overflow: scroll">
+                        <div class="w3-display-hover" style="max-height: 400px; overflow-y: scroll">
                             <hr>
                             {{ review.review|safe }}
                         </div>
                     </div>
                 {% endfor %}
                 <footer class="w3-container">
-                    <p style="color: #fc3955">Click on the review titles to view them in detail</p>
+                    <p style="color: #fc3955">
+                        Click on the review titles to view them in detail
+                        <br>
+                        Click <a class="link">here</a> to view all staff reviews
+                    </p>
                 </footer>
             </div>
         </div>
@@ -77,12 +81,16 @@
                         </h4>
                         <div class="w3-display-hover">
                             <hr>
-                            <p style="max-height: 400px; overflow: scroll">{{ review.review|safe }}</p>
+                            <p style="max-height: 400px; overflow-y: scroll">{{ review.review|safe }}</p>
                         </div>
                     </div>
                 {% endfor %}
                 <footer class="w3-container">
-                    <p style="color: #fc3955">Click on the reviews to view them in detail</p>
+                    <p style="color: #fc3955">
+                        Click on the reviews to view them in detail
+                        <br>
+                        Click <a class="link">here</a> to view all user reviews
+                    </p>
                 </footer>
             </div>
         </div>
