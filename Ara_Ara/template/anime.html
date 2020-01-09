@@ -61,7 +61,7 @@
                     </div>
                 {% endfor %}
                 <footer class="w3-container">
-                    <p style="color: #fc3955">Click on the reviews to view them in detail</p>
+                    <p style="color: #fc3955">Click on the review titles to view them in detail</p>
                 </footer>
             </div>
         </div>
@@ -98,12 +98,13 @@
                 <div class="w3l-form-group">
                     <div class="group">
                         <i class="material-icons icon">star</i>
-                        <select name="score" class="w3-center" style="appearance: none; -moz-appearance: none">
+                        <select name="score" class="w3-center"
+                                style="">
                             {% for score in scores %}
                                 <option value="{{ score.0 }}" selected>{{ score.1 }}</option>
                             {% endfor %}
                         </select>
-                        <i class="material-icons icon">arrow_drop_down</i>
+                        {#                        <i class="material-icons icon">arrow_drop_down</i>#}
                     </div>
                 </div>
 

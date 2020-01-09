@@ -2,15 +2,22 @@ from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.db.models import Avg
 from django.shortcuts import render, redirect
 
 from Ara_Ara.forms import NewUserForm
 from Ara_Ara.models import Anime, Review
 
-context = {
-    'top_anime': Anime.objects.all()[:3],
-    'ongoing_favourites': Anime.objects.filter(status='a')[:4]
-}
+
+def generate_context():
+    return {
+        'top_anime': [Anime.objects.get(id=i['anime']) for i in
+                      Review.objects.values('anime').annotate(avg_score=Avg('score')).order_by('-avg_score')[:6]],
+        'ongoing_favourites': [Anime.objects.get(id=i['anime']) for i in
+                               Review.objects.values('anime')
+                                   .filter(anime__in=Anime.objects.values('id').filter(status='a'))
+                                   .annotate(avg_score=Avg('score')).order_by('-avg_score')[:6]]
+    }
 
 
 # Create your views here.
@@ -68,13 +75,13 @@ def logout_request(request):
 
 # display homepage
 def homepage(request):
-    global context
+    context = generate_context()
     context['animes'] = Anime.objects.all().order_by('total_eps')[::-1]
     return render(request, 'homepage.html', context)
 
 
 def anime_details(request, anime_id):
-    global context
+    context = generate_context()
     context['anime'] = Anime.objects.get(id=anime_id)
     context['user_reviews'] = Review.objects.filter(anime=context['anime'], user__is_staff=False)[:3]
     context['staff_reviews'] = Review.objects.filter(anime=context['anime'], user__is_staff=True)[:3]

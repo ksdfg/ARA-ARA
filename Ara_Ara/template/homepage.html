@@ -16,7 +16,7 @@
                                 <h5 style="display: inline; color: white">Genres</h5> : {{ anime.genres }}
                             </li>
                             <li><h3>Synopsis</h3>
-                                <div style="max-height: 300px; overflow: hidden">{{ anime.synopsis }}</div>
+                                <div style="max-height: 300px; overflow: hidden">{{ anime.synopsis|safe }}</div>
                             </li>
                         </span>
                         <img class="w3-image w3-round-large w3-margin-top w3-margin-bottom" src="{{ anime.poster.url }}"
