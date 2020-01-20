@@ -1,4 +1,5 @@
 from datetime import datetime as dt
+from random import choice
 
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
@@ -90,8 +91,18 @@ def logout_request(request):
 # display homepage
 def homepage(request):
     context = generate_context()
+    context['animes'] = Anime.objects.filter(
+        id__in=[10, 34, 22, 23, 41, 9, 43, 45, 12, 42, 19, 20, 38, 37, 7, 15, 1, 40, 44, 31])
+    context['title'] = "Recommended Shows"
+    return render(request, 'display.html', context)
+
+
+# display all anime
+def all_anime(request):
+    context = generate_context()
     context['animes'] = Anime.objects.all().order_by('total_eps')[::-1]
-    return render(request, 'homepage.html', context)
+    context['title'] = "All Shows"
+    return render(request, 'display.html', context)
 
 
 def anime_details(request, anime_id):
@@ -114,3 +125,7 @@ def review(request):
         new_review.save()
         messages.success(request, f"Review for {new_review.anime} added!")
         return anime_details(request, anime_id=new_review.anime.id)
+
+
+def random(request):
+    return anime_details(request, anime_id=choice(range(len(Anime.objects.all()))))
