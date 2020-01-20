@@ -53,10 +53,6 @@
             <a href="{% url 'logout' %}" class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
                 Logout
             </a>
-            <a href="javascript:void(0)"
-               class="w3-col l1 w3-bar-item w3-right w3-button w3-round w3-hover-theme-red">
-                Profile
-            </a>
             {% if request.user.is_staff %}
                 <a href="{% url 'admin:index' %}" class="w3-right w3-display-hover" style="margin-right: 3.5%">
                     <i class="material-icons w3-hover-text-theme-red w3-bar-item" style="position: absolute">
@@ -95,7 +91,7 @@
             <div class="translucent w3-display-container w3-panel w3-round-large w3-card-4 w3-margin-left">
                 <h2>Today's Releases</h2>
                 <ul class="w3-ul w3-padding">
-                    {% for anime in ongoing_favourites %}
+                    {% for anime in releases %}
                         <li class="w3-hover-theme-red">
                             <a href="{% url 'anime' anime_id=anime.id %}">
                                 {{ anime.name }}

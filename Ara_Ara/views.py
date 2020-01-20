@@ -1,3 +1,5 @@
+from datetime import datetime as dt
+
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -8,9 +10,21 @@ from django.shortcuts import render, redirect
 from Ara_Ara.forms import NewUserForm
 from Ara_Ara.models import Anime, Review
 
+schedule = {
+    0: ["Babylon"],
+    1: ["Diamond no Ace: Act II ", "Chihayafuru 3", "Black Clover"],
+    2: ["Ahiru no Sora", "Mugen no Juunin: Immortal"],
+    3: ["Azur Lane"],
+    4: ["Kabukichou Sherlock"],
+    5: ["Boku no Hero Academia 4th Season", "Mairimashita! Iruma-kun",
+        "Fate/Grand Order: Zettai Majuu Sensen Babylonia", "One Piece"],
+    6: ["Boruto: Naruto Next Generations", "Eizouken ni wa Te wo Dasu na!"]
+}
+
 
 def generate_context():
     return {
+        'releases': Anime.objects.filter(name__in=schedule[dt.today().weekday()]),
         'top_anime': [Anime.objects.get(id=i['anime']) for i in
                       Review.objects.values('anime').annotate(avg_score=Avg('score')).order_by('-avg_score')[:6]],
         'ongoing_favourites': [Anime.objects.get(id=i['anime']) for i in
