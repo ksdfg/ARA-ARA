@@ -26,8 +26,7 @@ if os.path.exists(os.path.join(BASE_DIR, 'project', 'config.json')):
 else:
     try:
         data = {
-            "DATABASE_URL": os.environ["DATABASE_URL"],
-            "DEBUG": os.environ["DATABASE_URL"]
+            "DATABASE_URL": os.environ["DATABASE_URL"]
         }
     except KeyError:
         print("You don't have configuration JSON or environment variables set, go away")
@@ -40,9 +39,9 @@ else:
 SECRET_KEY = 'v-cb8xk=2!s1+3oh2fvsi7tc9(+p@!@b%mq_#$r+sm9rhtdmy8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = data["DEBUG"] == "True"
+DEBUG = True
 
-ALLOWED_HOSTS = ["ara-ara-ufufu.herokuapp.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["ara-ara-ufufu.herokuapp.com"]
 
 # Application definition
 
