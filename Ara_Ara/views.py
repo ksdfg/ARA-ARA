@@ -13,7 +13,7 @@ from Ara_Ara.models import Anime, Review
 
 schedule = {
     0: ["Babylon"],
-    1: ["Diamond no Ace: Act II ", "Chihayafuru 3", "Black Clover"],
+    1: ["Diamond no Ace: Act II", "Chihayafuru 3", "Black Clover"],
     2: ["Ahiru no Sora", "Mugen no Juunin: Immortal"],
     3: ["Azur Lane"],
     4: ["Kabukichou Sherlock"],
