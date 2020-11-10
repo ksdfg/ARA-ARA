@@ -26,5 +26,6 @@ urlpatterns = [
     path('anime?<anime_id>', views.anime_details, name='anime'),
     path('review', views.review, name='review'),
     path('anime/all', views.all_anime, name='all anime'),
+    path('anime/ongoing', views.ongoing, name='ongoing anime'),
     path('anime/random', views.random, name='random anime'),
 ]

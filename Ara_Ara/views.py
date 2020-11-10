@@ -12,11 +12,11 @@ from Ara_Ara.forms import NewUserForm
 from Ara_Ara.models import Anime, Review
 
 schedule = {
-    0: [9],
-    1: [15, 14, 10],
-    2: [7, 20],
-    3: [8],
-    4: [17],
+    0: [29],
+    1: [3],
+    2: [30, 31],
+    3: [32],
+    4: [33],
     5: [25, 26],
     6: [27, 28]
 }
@@ -101,6 +101,14 @@ def all_anime(request):
     context = generate_context()
     context['animes'] = Anime.objects.all().order_by('total_eps')[::-1]
     context['title'] = "All Shows"
+    return render(request, 'display.html', context)
+
+
+# display ongoing anime
+def ongoing(request):
+    context = generate_context()
+    context['animes'] = Anime.objects.filter(status='a')
+    context['title'] = "Currently Airing"
     return render(request, 'display.html', context)
 
 
