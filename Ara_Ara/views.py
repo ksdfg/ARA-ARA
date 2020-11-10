@@ -91,7 +91,7 @@ def logout_request(request):
 def homepage(request):
     context = generate_context()
     context['animes'] = Anime.objects.filter(
-        id__in=[10, 34, 22, 23, 41, 9, 43, 45, 12, 42, 19, 20, 38, 37, 7, 15, 1, 40, 44, 31])
+        id__in=[2, 34, 22, 23, 41, 9, 43, 45, 12, 42, 19, 20, 38, 37, 7, 15, 1, 40, 44, 31])
     context['title'] = "Recommended Shows"
     return render(request, 'display.html', context)
 

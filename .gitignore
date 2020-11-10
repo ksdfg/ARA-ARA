@@ -2,5 +2,6 @@
 *.iml
 __pycache__
 Ara_Ara/migrations
-config.json
+project/config.json
 venv
+.venv

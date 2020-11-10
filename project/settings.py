@@ -46,8 +46,9 @@ ALLOWED_HOSTS = ["ara-ara-ufufu.herokuapp.com", "127.0.0.1", "localhost"]
 # Application definition
 
 INSTALLED_APPS = [
-    'material.admin',
-    'material.admin.default',
+    # 'material.admin',
+    # 'material.admin.default',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
