@@ -135,4 +135,4 @@ def review(request):
 
 
 def random(request):
-    return anime_details(request, anime_id=choice(range(len(Anime.objects.all()))))
+    return redirect('anime', anime_id=choice(Anime.objects.all()).id)
