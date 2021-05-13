@@ -18,14 +18,14 @@ from django.urls import path
 from Ara_Ara import views
 
 urlpatterns = [
-    path('base', views.view_base, name='base'),
-    path('', views.homepage, name='homepage'),
-    path('accounts/login/', views.login_request, name='login'),
-    path('accounts/logout', views.logout_request, name='logout'),
-    path('accounts/register', views.register_request, name='register'),
-    path('anime?<anime_id>', views.anime_details, name='anime'),
-    path('review', views.review, name='review'),
-    path('anime/all', views.all_anime, name='all anime'),
-    path('anime/ongoing', views.ongoing, name='ongoing anime'),
-    path('anime/random', views.random, name='random anime'),
+    path("base", views.view_base, name="base"),
+    path("", views.homepage, name="homepage"),
+    path("accounts/login/", views.login_request, name="login"),
+    path("accounts/logout", views.logout_request, name="logout"),
+    path("accounts/register", views.register_request, name="register"),
+    path("anime?<anime_id>", views.anime_details, name="anime"),
+    path("review", views.review, name="review"),
+    path("anime/all", views.all_anime, name="all anime"),
+    path("anime/ongoing", views.ongoing, name="ongoing anime"),
+    path("anime/random", views.random, name="random anime"),
 ]
