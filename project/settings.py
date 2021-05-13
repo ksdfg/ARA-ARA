@@ -14,21 +14,11 @@ import os
 from json import load
 
 import connection_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# import config settings from json or env
-data = dict()
-if os.path.exists(os.path.join(BASE_DIR, "project", "config.json")):
-    with open(os.path.join(BASE_DIR, "project", "config.json"), "r") as f:
-        data = load(f)
-else:
-    try:
-        data = {"DATABASE_URL": os.environ["DATABASE_URL"]}
-    except KeyError:
-        print("You don't have configuration JSON or environment variables set, go away")
-        exit(1)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -45,7 +35,6 @@ ALLOWED_HOSTS = ["ara-ara-ufufu.herokuapp.com", "127.0.0.1", "localhost"]
 
 INSTALLED_APPS = [
     "material.admin",
-    "material.admin.default",
     # 'django.contrib.admin',
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -89,7 +78,9 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {"default": connection_url.config(data["DATABASE_URL"])}
+DATABASES = {"default": connection_url.config(config("DATABASE_URL"))}
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
