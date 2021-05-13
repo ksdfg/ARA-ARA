@@ -5,3 +5,4 @@ Ara_Ara/migrations
 project/config.json
 venv
 .venv
+.env

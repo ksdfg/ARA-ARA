@@ -9,13 +9,15 @@ authors = ["ksdfg <ksdfg123@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9.5"
+python = "3.9.5"
 Django = "^3.2.3"
 django-connection-url = "^0.1.2"
 django-material-admin = "^1.8.5"
 gunicorn = "^20.1.0"
 psycopg2 = "^2.8.6"
 whitenoise = "^5.2.0"
+python-decouple = "^3.4"
+Pillow = "^8.2.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.5b1"
